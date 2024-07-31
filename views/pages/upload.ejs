@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('../partials/head'); %>
+    <link rel="stylesheet" href="css/upload.css" />
+  </head>
+  <body>
+    <header><%- include("../partials/navbar") %></header>
+    <div class="upload-container">
+      <form
+        id="upload-form"
+        action="/upload-file"
+        method="POST"
+        enctype="multipart/form-data"
+      >
+        <input type="file" id="file" name="file" />
+        <br />
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+  </body>
+</html>
