@@ -1,8 +1,18 @@
+#ll {
+  padding: 20px;
+  text-align: center;
+  position: sticky;
+  top: 0;
+  margin: 0;
+  background-color: rgba(255, 255, 255, 0.5)
+}
+
 nav ul {
   display: flex;
   justify-content: center;
   list-style-type: none;
   gap: 1rem;
+  padding: 0;
 }
 
 nav ul li a {
@@ -17,13 +27,4 @@ nav ul li a {
 
 nav ul li a:hover {
   background-color: coral;
-}
-
-#ll{
-  padding: 20px;
-  text-align: center;
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-  margin:0;
 }

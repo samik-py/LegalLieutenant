@@ -1,8 +1,10 @@
-function toggleSummary(e) {
-  console.log(e);
+function showSummary(e) {
   const element = e.target;
-  const newDataToggle = element.innerText;
-  element.innerText = element.dataset.toggle;
-  element.dataset.toggle = newDataToggle;
+  element.innerText = element.dataset.summary;
+}
+
+function hideSummary(e) {
+  const element = e.target;
+  element.innerText = element.dataset.content;
 }
 

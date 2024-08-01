@@ -11,7 +11,8 @@
   <header><%- include('../partials/navbar'); %></header>
   <main>
     <% sections.forEach(function(section) { %>
-      <div data-toggle="<%= section.summary %>" onmouseenter="toggleSummary(event)" onmouseout="toggleSummary(event)">
+      <div data-content="<%= section.content %>" data-summary="<%= section.summary %>" onmouseenter="showSummary(event)"
+        onmouseout="hideSummary(event)">
         <%= section.content %>
       </div>
       <% }); %>
