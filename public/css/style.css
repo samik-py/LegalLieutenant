@@ -1,5 +1,6 @@
 nav ul {
   display: flex;
+  justify-content: center;
   list-style-type: none;
   gap: 1rem;
 }
@@ -11,8 +12,18 @@ nav ul li a {
   background-color: lightcoral;
   color: black;
   transition: background-color 500ms;
+  text-transform: uppercase;
 }
 
 nav ul li a:hover {
   background-color: coral;
+}
+
+#ll{
+  padding: 20px;
+  text-align: center;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  margin:0;
 }
