@@ -4,7 +4,7 @@
   "description": "Make any legal work a breeze",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node ."
   },
   "repository": {
     "type": "git",
@@ -15,7 +15,7 @@
     "lieutenant",
     "helper"
   ],
-  "author": "ps-coding <prasham31@gmail.com> (https://shahprasham.com/)",
+  "author": "Project: Empower South Jersey",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/samik-py/LegalLieutenant/issues"
