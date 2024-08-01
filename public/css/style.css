@@ -1,30 +1,33 @@
-#ll {
-  padding: 20px;
-  text-align: center;
-  position: sticky;
-  top: 0;
-  margin: 0;
-  background-color: rgba(255, 255, 255, 0.5)
-}
-
 nav ul {
   display: flex;
   justify-content: center;
   list-style-type: none;
   gap: 1rem;
-  padding: 0;
+  padding-bottom: 20px;
 }
+
 
 nav ul li a {
   padding: 0.5rem;
   border-radius: 10px;
   text-decoration: none;
-  background-color: lightcoral;
+  background-color: #66BBB0;
   color: black;
   transition: background-color 500ms;
   text-transform: uppercase;
+ 
 }
 
+
 nav ul li a:hover {
-  background-color: coral;
+  background-color: #549b91;
+}
+
+
+#ll{
+  padding: 20px;
+  text-align: center;
+  position: relative;
+  top: 0;
+  margin:0;
 }
