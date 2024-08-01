@@ -3,13 +3,13 @@
 
 <head>
   <%- include('../partials/head'); %>
-    <link rel="stylesheet" href="css/understand.css" />
+    <link rel="stylesheet" href="css/forms.css" />
 </head>
 
 <body>
   <header><%- include("../partials/navbar") %></header>
-  <main class="upload-container">
-    <form id="upload-form" action="/upload-file" method="POST" enctype="multipart/form-data">
+  <main>
+    <form action="/explain" method="POST" enctype="multipart/form-data">
       <input type="file" id="file" name="file" />
       <br />
       <button type="submit">Submit</button>

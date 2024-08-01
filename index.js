@@ -9,6 +9,7 @@ const app = express();
 const port = process.env.PORT || 3000;
 
 app.use(express.static(__dirname + "/public"));
+app.use(express.urlencoded({ extended: true }))
 app.set("view engine", "ejs");
 
 const storage = multer.diskStorage({
@@ -26,23 +27,29 @@ app.get("/", (_, res) => {
   res.render("pages/index");
 });
 
-app.get("/understand", (_, res) => {
-  res.render("pages/understand");
+app.get("/explain", (_, res) => {
+  res.render("pages/explain-upload");
 });
 
-app.get("/fill", (_, res) => {
-  res.render("pages/fill");
+app.get("/generate", (_, res) => {
+  res.render("pages/generate-upload");
 });
 
-app.post("/upload", upload.single("file"), async (req, res) => {
+app.post("/explain", upload.single("file"), async (req, res) => {
   if (req.file) {
     const documentContent = await reader.getText(req.file.path);
     fs.unlink(req.file.path, (_) => { })
-    res.status(201).render("pages/explain", { documentContent });
+    res.status(201).render("pages/explain-results", { documentContent });
   } else {
     res.redirect(400, "/");
   }
 });
+
+app.post("/generate", (req, res) => {
+  const formName = req.body.formName;
+  const information = req.body.information;
+  res.render("pages/generate-results", { formName, information })
+})
 
 app.listen(port, () => {
   console.log(`Server started on port ${port}.`);
