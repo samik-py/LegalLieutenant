@@ -3,13 +3,17 @@
 
 <head>
   <%- include('../partials/head'); %>
+    <link rel="stylesheet" href="/css/explain-results.css" />
+    <script src="/js/explain-results.js" defer></script>
 </head>
 
 <body>
   <header><%- include('../partials/navbar'); %></header>
   <main>
-    <pre>
-      <%= documentContent %>
-    </pre>
+    <% sections.forEach(function(section) { %>
+      <div data-toggle="<%= section.summary %>" onmouseenter="toggleSummary(event)" onmouseout="toggleSummary(event)">
+        <%= section.content %>
+      </div>
+      <% }); %>
   </main>
 </body>

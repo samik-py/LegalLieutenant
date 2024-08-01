@@ -13,15 +13,20 @@ app.use(express.urlencoded({ extended: true }))
 app.set("view engine", "ejs");
 
 const storage = multer.diskStorage({
-  destination: function(_, _, cb) {
+  destination: function (_, _, cb) {
     cb(null, 'uploads/');
   },
-  filename: function(_, file, cb) {
+  filename: function (_, file, cb) {
     cb(null, Date.now() + path.extname(file.originalname));
   }
 });
 
 const upload = multer({ storage });
+
+const summarize = async (section) => {
+  // TODO: Insert AI code here
+  return "summary"
+}
 
 app.get("/", (_, res) => {
   res.render("pages/index");
@@ -38,8 +43,12 @@ app.get("/generate", (_, res) => {
 app.post("/explain", upload.single("file"), async (req, res) => {
   if (req.file) {
     const documentContent = await reader.getText(req.file.path);
-    fs.unlink(req.file.path, (_) => { })
-    res.status(201).render("pages/explain-results", { documentContent });
+    const all_sections = await Promise.all(documentContent.split("\n").map(async (section) => ({ content: section, summary: await summarize(section) })));
+    const sections = all_sections.filter((section) => section.content.trim() != "")
+    fs.unlink(req.file.path, (e) => {
+      console.error(e)
+    })
+    res.status(201).render("pages/explain-results", { sections });
   } else {
     res.redirect(400, "/");
   }
