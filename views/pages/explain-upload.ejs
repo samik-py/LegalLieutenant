@@ -9,8 +9,12 @@
 <body>
   <header><%- include("../partials/navbar") %></header>
   <main>
-    <form action="/explain" method="POST" enctype="multipart/form-data">
+    <form action="/explain-file" method="POST" enctype="multipart/form-data">
       <input type="file" id="file" name="file" />
+      <button type="submit">Submit</button>
+    </form>
+    <form action="/explain-text" method="POST">
+      <textarea id="documentContent" name="documentContent"></textarea>
       <button type="submit">Submit</button>
     </form>
   </main>

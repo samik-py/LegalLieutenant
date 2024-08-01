@@ -40,18 +40,25 @@ app.get("/generate", (_, res) => {
   res.render("pages/generate-upload");
 });
 
-app.post("/explain", upload.single("file"), async (req, res) => {
+app.post("/explain-file", upload.single("file"), async (req, res) => {
   if (req.file) {
     const documentContent = await reader.getText(req.file.path);
     const all_sections = await Promise.all(documentContent.split("\n").map(async (section) => ({ content: section, summary: await summarize(section) })));
     const sections = all_sections.filter((section) => section.content.trim() != "")
-    fs.unlink(req.file.path, (e) => {
-      console.error(e)
+    fs.unlink(req.file.path, (err) => {
+      if (err) console.error(err)
     })
-    res.status(201).render("pages/explain-results", { sections });
+    res.render("pages/explain-results", { sections });
   } else {
-    res.redirect(400, "/");
+    res.redirect("/explain");
   }
+});
+
+app.post("/explain-text", async (req, res) => {
+  const documentContent = req.body.documentContent;
+  const all_sections = await Promise.all(documentContent.split("\n").map(async (section) => ({ content: section, summary: await summarize(section) })));
+  const sections = all_sections.filter((section) => section.content.trim() != "")
+  res.status(201).render("pages/explain-results", { sections });
 });
 
 app.post("/generate", (req, res) => {
